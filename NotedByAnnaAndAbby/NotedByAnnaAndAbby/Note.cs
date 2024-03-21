@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,7 +31,7 @@ namespace NotedByAnnaAndAbby
             return Id;
         }
 
-        public Note NewNote()
+        public Note NewObj()
         {
             CreateUpdateNote frm2 = new CreateUpdateNote();
             DialogResult dr = frm2.ShowDialog();
@@ -46,6 +47,28 @@ namespace NotedByAnnaAndAbby
                 frm2.Close();
                 return t;
                 
+            }
+            throw new Exception("E");
+        }
+
+        public void UpdateObj()
+        {
+            CreateUpdateNote frm2 = new CreateUpdateNote(this);
+            DialogResult dr = frm2.ShowDialog();
+            if (dr == DialogResult.Cancel)
+            {
+                frm2.Close();
+            }
+            else if (dr == DialogResult.OK)
+            {
+                //textBox1.Text = frm2.getText();
+
+                this.Title = frm2.getTitle();
+                this.Content = frm2.getContent();
+                frm2.Close();
+                return;
+              
+
             }
             throw new Exception("E");
         }
